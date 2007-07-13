@@ -6,6 +6,7 @@ License:	GPL
 Group:		Applications/System
 Source:		%{name}-%{version}.tar.gz
 Patch0:		%{name}-configure.patch
+Patch1:		%{name}-python.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	cups-devel
@@ -24,6 +25,7 @@ Halified utilities for CUPS:
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure --enable-printconf 
