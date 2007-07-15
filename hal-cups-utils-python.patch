@@ -2,7 +2,7 @@
 +++ hal-cups-utils-0.6.9/systemv/hal_lpadmin	2007-07-13 14:07:51.787683409 +0200
 @@ -1,4 +1,4 @@
 -#!/bin/env python
-+#!/usr/bin/env python
++#!/usr/bin/python
  import dbus, sys, os, time
  import traceback
  import locale
