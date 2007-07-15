@@ -1,34 +1,43 @@
 Summary:	Halified CUPS utilities 
+Summary(pl.UTF-8):	HAL-owe narzędzia dla CUPS-a
 Name:		hal-cups-utils
 Version:	0.6.9
 Release:	1
-License:	GPL
+License:	CUPS (GPL v2 with OpenSSL linking exception)
 Group:		Applications/System
 Source:		%{name}-%{version}.tar.gz
-Patch0:		%{name}-configure.patch
-Patch1:		%{name}-python.patch
-BuildRequires:	autoconf
-BuildRequires:	automake
+Patch0:		%{name}-python.patch
 BuildRequires:	cups-devel
-BuildRequires:	dbus-devel >= 0.92
+# dbus just to satisfy configure
+BuildRequires:	dbus-devel
+BuildRequires:	dbus-glib-devel
+BuildRequires:	glib2-devel >= 1:2.4
 BuildRequires:	hal-devel >= 0.5.7
+BuildRequires:	sed >= 4.0
 Requires:	cups
-Requires:	hal
+Requires:	hal >= 0.5.7
 Requires:	system-config-printer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Halified utilities for CUPS:
-	- hal_lpadmin
-	- hal CUPS backend
+ - hal_lpadmin
+ - hal CUPS backend
+
+%description -l pl.UTF-8
+HAL-owe narzędzia dla CUPS-a:
+ - hal_lpadmin
+ - backend hal dla CUPS-a
 
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+
+sed -i -e 's,/usr/libexec/,%{_libexecdir}/,' systemv/10-hal_lpadmin.fdi
 
 %build
-%configure --enable-printconf 
+%configure \
+	--enable-printconf 
 %{__make}
 
 %install
@@ -41,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644, root, root, 755)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS COPYING ChangeLog README
 %{_libexecdir}/hal_lpadmin
-%{_libdir}/cups/backend/hal
+%{_prefix}/lib/cups/backend/hal
 %{_datadir}/hal/fdi/policy/10osvendor/10-hal_lpadmin.fdi
