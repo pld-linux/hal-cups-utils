@@ -5,7 +5,8 @@ Version:	0.6.9
 Release:	1
 License:	CUPS (GPL v2 with OpenSSL linking exception)
 Group:		Applications/System
-Source:		%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
+# Source0-md5:	41fcab411be1055ea2e519b7b2c8662a
 Patch0:		%{name}-python.patch
 BuildRequires:	cups-devel
 # dbus just to satisfy configure
