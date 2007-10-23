@@ -1,12 +1,12 @@
 Summary:	Halified CUPS utilities 
 Summary(pl.UTF-8):	HAL-owe narzędzia dla CUPS-a
 Name:		hal-cups-utils
-Version:	0.6.9
-Release:	1
+Version:	0.6.13
+Release:	0.r83.1
 License:	CUPS (GPL v2 with OpenSSL linking exception)
 Group:		Applications/System
 Source0:	%{name}-%{version}.tar.gz
-# Source0-md5:	41fcab411be1055ea2e519b7b2c8662a
+# Source0-md5:	435e0a2127677e7a6b06f1890e13af78
 Patch0:		%{name}-python.patch
 BuildRequires:	cups-devel
 # dbus just to satisfy configure
@@ -31,7 +31,7 @@ HAL-owe narzędzia dla CUPS-a:
  - backend hal dla CUPS-a
 
 %prep
-%setup -q
+%setup -q -n trunk
 %patch0 -p1
 
 sed -i -e 's,/usr/libexec/,%{_libexecdir}/,' systemv/10-hal_lpadmin.fdi
