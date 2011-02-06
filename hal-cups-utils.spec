@@ -50,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog README
 %{_libexecdir}/hal_lpadmin
 %{_prefix}/lib/cups/backend/hal
