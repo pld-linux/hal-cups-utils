@@ -32,7 +32,7 @@ HAL-owe narzędzia dla CUPS-a:
 
 %prep
 %setup -q -n trunk
-%patch0 -p1
+%patch -P0 -p1
 
 sed -i -e 's,/usr/libexec/,%{_libexecdir}/,' systemv/10-hal_lpadmin.fdi
 
